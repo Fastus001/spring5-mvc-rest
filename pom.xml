@@ -25,7 +25,7 @@
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<springfox-swagger.version>3.0.0</springfox-swagger.version>
+		<springfox-swagger.version>2.7.0</springfox-swagger.version>
 	</properties>
 
 	<dependencies>
