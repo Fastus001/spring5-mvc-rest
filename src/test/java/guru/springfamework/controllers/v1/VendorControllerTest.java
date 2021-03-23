@@ -63,7 +63,8 @@ class VendorControllerTest extends AbstractRestControllerTest{
         Mockito.when(vendorService.getAllVendors()).thenReturn(vendors);
 
         mockMvc.perform(get("/api/v1/vendors")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.vendors", hasSize(2)));
     }
@@ -73,7 +74,8 @@ class VendorControllerTest extends AbstractRestControllerTest{
         Mockito.when(vendorService.getVendorById(anyLong())).thenReturn(vendorDTO);
 
         mockMvc.perform(get("/api/v1/vendors/1")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", equalTo(1)))
                 .andExpect(jsonPath("$.name", equalTo(VENDOR)));
@@ -86,6 +88,7 @@ class VendorControllerTest extends AbstractRestControllerTest{
 
         mockMvc.perform(post("/api/v1/vendors")
                 .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .content(asJsonString(vendorDTO)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", equalTo(1)))
@@ -99,6 +102,7 @@ class VendorControllerTest extends AbstractRestControllerTest{
 
         mockMvc.perform(put("/api/v1/vendors/1")
                 .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .content(asJsonString(vendorDTO)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", equalTo(1)))
@@ -112,6 +116,7 @@ class VendorControllerTest extends AbstractRestControllerTest{
 
         mockMvc.perform(patch("/api/v1/vendors/1")
                 .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
                 .content(asJsonString(vendorDTO)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", equalTo(1)))
